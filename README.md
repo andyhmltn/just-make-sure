@@ -2,7 +2,7 @@
 
 justmakesure is an EXTREMELY minimal javascript testing tool.   
 I was working on a small-ish project and just wanted to make sure a few things were working as intended. I had no internet access to download a library so I wrote this tool.   
-It is meant to be as easy and quick as possible to test really basic functionality for small projects.   
+It is meant to be _as easy and as quick as possible_ to test really __basic__ functionality for small projects.   
 
 ## Usage
 Add justmakesure.js and justmakesure.css to an html page along with the file you want to test and a test file (or write your tests in your html), open up the html file in your favorite browser and see the results.    
