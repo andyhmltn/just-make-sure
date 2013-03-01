@@ -62,8 +62,14 @@ var runTests = function() {
 
 // Updates '#makesure-totals' with the results of the tests
 var updateTotals = function() {
-    var totals = document.getElementById('makesure-totals');
-    totals.textContent = MAKE_SURE._passed + '/' + MAKE_SURE._total + ' tests passed';
+    var totals = document.getElementById('makesure-totals'),
+        percentPassed = Math.round(MAKE_SURE._passed / MAKE_SURE._total * 100);
+    totals.textContent = percentPassed + '% (' + MAKE_SURE._passed + '/' + MAKE_SURE._total + ') of your tests passed.';
+    if (percentPassed === 100) {
+        totals.textContent += ' GOOD JOB!';
+    } else if (percentPassed === 0) {
+        totals.textContent += ' Better start working..';
+    }
 }
 
 // when the document has finished loading, creates divs in which the results will be displayed and runs the tests
