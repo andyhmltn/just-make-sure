@@ -7,6 +7,7 @@ It is meant to be as easy and quick as possible to test really basic functionali
 ## Usage
 Add justmakesure.js and justmakesure.css to an html page along with the file you want to test and a test file (or write your tests in your html), open up the html file in your favorite browser and see the results.    
 __For example:__   
+ 
 	var a = 3;
                 
 	MAKE_SURE.after_each = function() { a = 3 };
