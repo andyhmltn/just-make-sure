@@ -7,48 +7,34 @@ It is meant to be as easy and quick as possible to test really basic functionali
 ## Usage
 Add justmakesure.js and justmakesure.css to an html page along with the file you want to test and a test file (or write your tests in your html), open up the html file in your favorite browser and see the results.    
 __For example:__   
-    <!DOCTYPE html>
-    <html>
-        <head>
-            <script type="text/javascript" src="justmakesure.js"></script>
-            <link rel="stylesheet" type="text/css" href="justmakesure.css">
-            <!--
-                include the script you want to test
-            -->
-        </head>
-        <body>
-            <script type="text/javascript">
-                var a = 3;
+	var a = 3;
                 
-                MAKE_SURE.after_each = function() { a = 3 };
+	MAKE_SURE.after_each = function() { a = 3 };
                 
-                // This will pass
-                makeSure("Multiplying 3 by 4 gives 12", function() {
-                    a *= 4;
-                    return a === 12;
-                });
+	// This will pass
+	makeSure("Multiplying 3 by 4 gives 12", function() {
+		a *= 4;
+ 		return a === 12;
+	});
                 
-                // This will fail
-                makeSure("Adding 17 to 3 gives 21", function() {
-                    a += 17;
-                    return a === 21;
-                });
+	// This will fail
+	makeSure("Adding 17 to 3 gives 21", function() {
+		a += 17;
+		return a === 21;
+	});
                 
-                // This will throw an exception
-                makeSure("Calling plusOne on 3 gives 4", function() {
-                    a.plusOne();
-                    return a === 4;
-                });
+	// This will throw an exception
+	makeSure("Calling plusOne on 3 gives 4", function() {
+		a.plusOne();
+		return a === 4;
+	});
                 
-                // Testing objects
-                makeSure("An array of numbers is sorted correctly", function() {
-                    var actual   = [2, 1, 4, 3].sort(),
-                        expected = [1, 2, 3, 4];
-                    return JSON.stringify(actual) === JSON.stringify(expected);
-                });
-            </script>
-        </body>
-    </html>
+	// Testing objects
+	makeSure("An array of numbers is sorted correctly", function() {
+		var actual   = [2, 1, 4, 3].sort(),
+		expected = [1, 2, 3, 4];
+		return JSON.stringify(actual) === JSON.stringify(expected);
+	});
 
 ---
 
