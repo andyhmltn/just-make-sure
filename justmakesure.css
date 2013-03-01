@@ -1,0 +1,32 @@
+#makesure
+{
+    display: inline-block;
+    border: 2px solid #888888;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#makesure-totals
+{
+    font-size: 1.25em;
+}
+
+.makesure-passed
+{
+    color: #00AA00;
+}
+
+.makesure-failed,
+.makesure-exception
+{
+    color: #FF0000;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: url(http://themes.googleusercontent.com/static/fonts/roboto/v7/RxZJdnzeo3R5zSexge8UUT8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
