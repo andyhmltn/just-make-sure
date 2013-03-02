@@ -11,6 +11,14 @@
  *
  */
 
+var CONTAINER_ID    = 'makesure';
+var RESULTS_ID      = 'makesure-results';
+var TOTALS_ID       = 'makesure-totals';
+var RESULT_CLASS    = 'makesure-results';
+var PASSED_CLASS    = 'makesure-passed';
+var FAILED_CLASS    = 'makesure-failed';
+var EXCEPTION_CLASS = 'makesure-exception';
+
 var MAKE_SURE = {
     
     // Configurable methods to run before and after each test
@@ -29,27 +37,27 @@ var makeSure = function(description, test) {
 
 // Runs all the test cases and displays results
 var runTests = function() {
-    var resultList = document.getElementById('makesure-results');
+    var resultList = document.getElementById(RESULTS_ID);
     
     for (var description in MAKE_SURE._tests) {
         
         if (typeof(MAKE_SURE.before_each) === 'function') { MAKE_SURE.before_each(); }
         
         var testResult = document.createElement('li');
-        testResult.classList.add('makesure-result');
+        testResult.classList.add(RESULT_CLASS);
         testResult.textContent = description + ' -> ';
         try {
             var result = MAKE_SURE._tests[description]();
             if (result) {
-                testResult.classList.add('makesure-passed');
+                testResult.classList.add(PASSED_CLASS);
                 testResult.textContent += 'PASSED!';
                 MAKE_SURE._passed++;
             } else {
-                testResult.classList.add('makesure-failed');
+                testResult.classList.add(FAILED_CLASS);
                 testResult.textContent += 'FAILED!';
             }
         } catch(e) {
-            testResult.classList.add('makesure-exception');
+            testResult.classList.add(EXCEPTION_CLASS);
             testResult.textContent += e.toString();
         }
         resultList.appendChild(testResult);
@@ -62,7 +70,7 @@ var runTests = function() {
 
 // Updates '#makesure-totals' with the results of the tests
 var updateTotals = function() {
-    var totals = document.getElementById('makesure-totals'),
+    var totals = document.getElementById(TOTALS_ID),
         percentPassed = Math.round(MAKE_SURE._passed / MAKE_SURE._total * 100);
     totals.textContent = percentPassed + '% (' + MAKE_SURE._passed + '/' + MAKE_SURE._total + ') of your tests passed.';
     if (percentPassed === 100) {
@@ -78,9 +86,9 @@ document.onreadystatechange = function() {
         var container = document.createElement('div'),
             results   = document.createElement('ul'),
             totals    = document.createElement('div');
-        container.setAttribute('id', 'makesure');
-        results.setAttribute('id', 'makesure-results');
-        totals.setAttribute('id', 'makesure-totals');
+        container.setAttribute('id', CONTAINER_ID);
+        results.setAttribute('id', RESULTS_ID);
+        totals.setAttribute('id', TOTALS_ID);
         document.body.appendChild(container);
         container.appendChild(results);
         container.appendChild(totals);
